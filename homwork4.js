@@ -20,5 +20,49 @@ function randomfood() {
         const kategori = document.getElementById("category")
         kategori.innerHTML = ""
         kategori.innerHTML = "Category: " + meal.strCategory
+
+        //legg til ingredientser
+        const ingrlist = document.getElementById("ingredients");
+        ingrlist.innerHTML = ""; //fjerner det som var der fra før
+
+        for (i=1; i<=20; i++) {
+            const ingr = meal["strIngredient" + i];
+            const measure = meal["strMeasure" + i];
+
+            if (ingr == "" ||  !ingr) {
+                continue;
+            }
+            const listitem = document.createElement("li");
+            listitem.textContent = `${ingr} - ${measure}`;
+            ingrlist.appendChild(listitem);
+        }
+
+        //legg til instruksjoner
+        const instrks = document.getElementById("instructions");
+        instrks.innerHTML = ""; //fjerner det som var der fra før
+        instrks.innerHTML = meal.strInstructions;
     })
+}
+
+function hentKategoriCocktail (randomfood) {
+
+    const drinkIngredient = mapMealCategoryToDrinkIngredient(mealCategory);
+
+    fetch ("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkIngredientVariable}")
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+        if (data.drinks && data.drinks.length > 0) {
+            const cocktail = data.drinks[0]
+            visCocktail(cocktail);
+        } else {
+            fetch ("https://www.thecocktaildb.com/api/json/v1/1/random.php")
+            .then(response => response.json())
+            .then (data => visCocktail(data.drinks[0]));
+        }
+    });
+}
+
+function visCocktail(cocktail){
+
 }
