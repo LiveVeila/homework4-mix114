@@ -2,9 +2,14 @@
     display: flex;
     gap: 32px;
     margin: 16px 32px;
+    justify-content: center;
 }
 
 .sidebyside > div {
     width: 1fr;
     margin: 16px;
+}
+
+h1 {
+    text-align: center;
 }
