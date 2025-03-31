@@ -13,3 +13,8 @@
 h1 {
     text-align: center;
 }
+
+img {
+    max-width: 1fr;
+    height: auto;
+}
