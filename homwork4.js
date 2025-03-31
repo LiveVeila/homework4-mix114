@@ -22,3 +22,26 @@ function randomfood() {
         kategori.innerHTML = "Category: " + meal.strCategory
     })
 }
+
+function hentKategoriCocktail (randomfood) {
+
+    const drinkIngredient = mapMealCategoryToDrinkIngredient(mealCategory);
+
+    fetch ("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkIngredientVariable}")
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+        if (data.drinks && data.drinks.length > 0) {
+            const cocktail = data.drinks[0]
+            visCocktail(cocktail);
+        } else {
+            fetch ("https://www.thecocktaildb.com/api/json/v1/1/random.php")
+            .then(response => response.json())
+            .then (data => visCocktail(data.drinks[0]));
+        }
+    });
+}
+
+function visCocktail(cocktail){
+
+}
