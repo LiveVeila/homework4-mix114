@@ -29,12 +29,17 @@ function randomfood() {
             const ingr = meal["strIngredient" + i];
             const measure = meal["strMeasure" + i];
 
-            if (ingr.trim() === "" ||  !ingr) {
+            if (ingr == "" ||  !ingr) {
                 continue;
             }
             const listitem = document.createElement("li");
-            listitem.textContent = `${ingr}  -  ${measure}`;
+            listitem.textContent = `${ingr} - ${measure}`;
             ingrlist.appendChild(listitem);
         }
+
+        //legg til instruksjoner
+        const instrks = document.getElementById("instructions");
+        instrks.innerHTML = ""; //fjerner det som var der fra før
+        instrks.innerHTML = meal.strInstructions;
     })
 }
