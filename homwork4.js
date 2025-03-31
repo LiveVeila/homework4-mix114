@@ -20,5 +20,21 @@ function randomfood() {
         const kategori = document.getElementById("category")
         kategori.innerHTML = ""
         kategori.innerHTML = "Category: " + meal.strCategory
+
+        //legg til ingredientser
+        const ingrlist = document.getElementById("ingredients");
+        ingrlist.innerHTML = ""; //fjerner det som var der fra før
+
+        for (i=1; i<=20; i++) {
+            const ingr = meal["strIngredient" + i];
+            const measure = meal["strMeasure" + i];
+
+            if (ingr.trim() === "" ||  !ingr) {
+                continue;
+            }
+            const listitem = document.createElement("li");
+            listitem.textContent = `${ingr}  -  ${measure}`;
+            ingrlist.appendChild(listitem);
+        }
     })
 }
