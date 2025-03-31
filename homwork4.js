@@ -93,7 +93,7 @@ function hentKategoriCocktail (kategori) {
 
             const drink = data.drinks[0];
             //legg til bilde
-            document.getElementById("cocktailimg").src = drink.strDrinkThumb
+            document.getElementById("cockimg").src = drink.strDrinkThumb
 
             //legg til tittel
             const cockttitl = document.getElementById("titlecocktail")

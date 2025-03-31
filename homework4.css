@@ -5,6 +5,7 @@ html {
 
 body {
     background-color: pink;
+    margin: 100px 200px;
 }
 
 .sidebyside {
@@ -16,7 +17,6 @@ body {
 
 .sidebyside > div {
     width: 1fr;
-    margin: 16px;
 }
 
 #bigheader {
